@@ -10,7 +10,7 @@ const monsters = ref([])
 const monsterNumber = ref ("")
 
 const currentPage  = ref(1)
-const totalPages = ref(2)
+const totalPages = ref(monsterNumber)
 
 async function callApi() {
     const url = `https://metallo.ew.r.appspot.com/monsters?page=${currentPage.value}`
@@ -25,7 +25,7 @@ async function callApi() {
 callApi()
 
 const prevPage=()=>{
-    if(currentPage.value == totalPages.value)
+    if(currentPage.value < totalPages.value || currentPage.value === totalPages.value )
     currentPage.value--;
     callApi()
 }
